@@ -1,0 +1,50 @@
+<div class="layout">
+    <div class="vertical-layout">
+        <!-- Header START -->
+        <app-user-header></app-user-header>  
+        <!-- Header END -->
+
+        <!-- Side Nav START -->
+        <app-sidevar></app-sidevar>
+        <!-- Side Nav END -->
+
+        <!-- Content START -->
+        <div class="content">
+            <div class="main">
+        
+                <div class="card">
+                    <div class="card-body">
+                        <div class="alert alert-danger col-md-6" [hidden]="!error" *ngFor="let item of error; index as i">
+                            {{error[i]}}
+                        </div>
+                        <div *ngIf="message" class="alert alert-success alert-dismissible fade show col-md-8" (click)="messageRemove()" role="alert">
+                            <strong>Successfully Item Insert!</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h4 class="mb-0">Add Item</h4> 
+                        </div>  
+                        <form [formGroup]="addItem" (ngSubmit)="saveItem()">
+                            <div class="form-group mb-4">
+                                <label class="form-label">Item Name</label>
+                                <textarea class="form-control" formControlName="category_name"></textarea>
+                            </div> 
+                            <button type="submit" class="btn btn-primary">Add New Item</button>
+                        </form>
+                    </div> 
+                </div>
+            </div> 
+            <!-- Footer START -->
+            <app-user-footer></app-user-footer>
+            <!-- Footer End -->
+        </div>
+        <!-- Content END -->
+
+    </div>
+</div>
+
+
+

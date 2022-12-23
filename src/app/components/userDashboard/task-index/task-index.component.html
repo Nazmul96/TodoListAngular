@@ -1,0 +1,121 @@
+<div class="layout">
+    <div class="vertical-layout">
+        <!-- Header START -->
+        <app-user-header></app-user-header>  
+        <!-- Header END -->
+
+        <!-- Side Nav START -->
+        <app-sidevar></app-sidevar>
+        <!-- Side Nav END -->
+      
+        <!-- Content START -->
+        <div class="content">
+            <div class="main">
+        
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h4 class="mb-0">Task List</h4>
+                            <a routerLink="/add-task" class="btn btn-outline-primary btn-sm">Add Task</a>
+                        </div>
+                        <div *ngIf="message" class="alert alert-success alert-dismissible fade show col-md-8" (click)="messageRemove()" role="alert">
+                            <strong>Successfully Task Deleted!</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div *ngIf="dulicateMessage" class="alert alert-success alert-dismissible fade show col-md-8" (click)="messageRemove()" role="alert">
+                            <strong>Successfully Task Duplicated!</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div *ngIf="busttonShow > 0">
+                            <button class="btn btn-primary btn-sm" (click)="completeTask()">Complete</button>
+                        </div><br> 
+                        <div class="table-responsive">
+                            <table datatable [dtOptions]="dtOptions" class="table"  *ngIf="taskData.length>0">
+                                <thead>
+                                    <tr>
+                                        <th>Task Title</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead> 
+                                <tbody>
+                                    <tr class="cursor-pointer" *ngFor="let item of taskData;">
+                                        <td>
+                                            <input type="checkbox" id="check_complete" class="" (change)="toggleButton($event,item['id'])">  <label for="check_complete">{{item['task_title']}}</label> 
+                                        </td>
+                                       <td><span class="badge bg-primary">{{item['catgory_list']['category_name']}}</span></td>
+                                        <td>
+                        
+                                            <span class="badge bg-success" *ngIf="item['status'] == 3">Completed</span>
+                                            <span class="badge bg-warning" *ngIf="item['status'] == 0">Pending</span>
+                                        </td>
+                                        <td class="text-end"  width="150">
+                                       
+                                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button"   data-bs-toggle="dropdown" aria-expanded="false">
+                                                   <i class="icon-more-vertical feather"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" routerLink="/edit-task/{{item['id']}}"><i class="icon-edit feather" ></i> Edit task</a></li>
+                                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="icon-clock feather"></i> Reminders</a></li>
+                                                    <li><a class="dropdown-item" (click)="duplicateTask(item['id'])"><i class="icon-copy feather"></i> Duplicate</a></li>
+                                                    <li><a class="dropdown-item"(click)="deleteTask(item['id'])"><i class="icon-delete feather"></i> Delete task</a></li>
+                                                </ul>
+                                             
+                                        </td>
+                                    </tr> 
+                                    
+                                </tbody> 
+                            </table>
+                        </div>
+                  
+                    </div>
+              
+                </div>
+            </div>
+            
+            <!-- <ng-template #content let-modal>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="dateOfBirth">Date of birth</label>
+                            <div class="input-group">
+                                <input
+                                    id="dateOfBirth"
+                                    class="form-control"
+                                    placeholder="yyyy-mm-dd"
+                                    name="dp"
+                                    ngbDatepicker
+                                    #dp="ngbDatepicker"
+                                />
+                                <button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp.toggle()" type="button"></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+                </div>
+            </ng-template>
+            
+            <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+            
+            <!-- Footer START -->
+            <app-user-footer></app-user-footer>
+            <!-- Footer End -->
+        </div>
+        <!-- Content END -->
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,42 @@
+<div class="layout">
+    <div class="vertical-layout">
+        <!-- Header START -->
+        <app-user-header></app-user-header>  
+        <!-- Header END -->
+
+        <!-- Side Nav START -->
+        <app-sidevar></app-sidevar>
+        <!-- Side Nav END -->
+
+        <!-- Content START -->
+        <div class="content">
+            <div class="main">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h4 class="mb-0">All Items</h4>
+                    <a routerLink="/add-item" class="btn btn-outline-primary btn-sm">Add Item</a>
+                </div>
+                <div class="row">
+                  
+                    <div class="col-md-3" *ngFor="let item of itemData;">
+                       <div class="card">
+                           <div class="card-body">
+                                <h6 class="text-primary">{{item['category_name']}}</h6>
+                                <p>Task: {{item['task_count']}}</p>
+                           </div>
+                       </div>
+                    </div>
+                </div>
+                 
+            </div>
+            <!-- Footer START -->
+            <app-user-footer></app-user-footer>
+            <!-- Footer End -->
+        </div>
+        <!-- Content END -->
+
+    </div>
+</div>
+
+
+
+

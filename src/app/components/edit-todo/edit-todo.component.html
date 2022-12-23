@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+          Edit Todo
+          <div *ngIf="addMessage" class="alert alert-success alert-dismissible fade show col-md-8" (click)="messageRemove()" role="alert">
+            <strong>Successfully Todo Updated!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="alert alert-danger col-md-6" [hidden]="!error" *ngFor="let item of error; index as i">
+                {{error[i]}}
+           </div>
+          <form [formGroup]="updateTodo" (ngSubmit)="updateTodoData()">
+            <div class="row">
+                <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Title</label>
+                          <input type="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title" required="" formControlName="title">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Category</label>
+                          <select  id="" class="form-control" (click)="getSubcategory(catId.value)" #catId formControlName="category_id">
+                                <option >--Select--</option>
+                                <option  *ngFor="let item of categoryData; index as i" value="{{item['id']}}">
+                                    {{item['category_name']}}
+                                </option>
+                          </select>
+                          
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Sub Category</label>
+                          <select  id="" class="form-control" formControlName="subcat_id">
+                            <option value="{{items['id']}}" *ngFor="let items of subCategoryData; index as i">
+                                {{items['subcat_name']}}
+                            </option> 
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Description</label>
+                          <textarea  id="" cols="30" rows="5" class="form-control" formControlName="description">
+        
+                          </textarea>
+                         
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Start Date</label>
+                          <input type="date"  id="" class="form-control" formControlName="start_time">
+                        </div>
+                  </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Who it for</label>
+                        <select  id="" class="form-control" formControlName="who_it_for">
+                          <option value="">--Select--</option>
+                          <option value="{{items['id']}}" *ngFor="let items of clientData; index as i">
+                            {{items['name']}}
+                          </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Recurring</label>
+                      <select  id="" class="form-control" formControlName="recurring">
+                        <option value="">--Select--</option>
+                        <option value="weekly">weekly</option>
+                        <option value="Monthly">Monthly</option>
+                      </select>
+                  </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Request a second signature?</label><br>
+                      <input type="checkbox" formControlName="second_signature">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Require carer to add a Quick-log after completing?</label><br>
+                      <input type="checkbox" formControlName="quick_log">
+                    </div>
+
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form> 
+        </div>
+    </div>
+</div>
+
+

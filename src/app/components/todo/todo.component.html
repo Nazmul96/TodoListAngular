@@ -1,0 +1,130 @@
+<div class="container">
+    <div *ngIf="message" class="alert alert-success alert-dismissible fade show col-md-8" (click)="messageRemove()" role="alert">
+        <strong>Successfully Todo Deleted!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div>
+        <h4 class="d-flex">All Todo
+            <a type="button" class="ml-auto btn btn-primary" id="openAdvertisementModal" routerLink="/addtodo">
+                <i class="fa fa-fw fa-plus"></i> Add New Todo
+            </a>
+        </h4>
+    </div>
+
+ <table datatable [dtOptions]="dtOptions" class="row-border hover" *ngIf="todoData.length>0">
+        <thead>
+	          <tr>
+	              <th>Title</th>
+	              <th>Description</th>
+	              <th>Start-time</th>
+	              <th>Recurring</th>
+	              <th>Status</th>
+	              <th>Action</th>
+	          </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let item of todoData;">
+                <td>{{item['title']}}</td>
+                <td>{{item['description']}}</td>
+                <td>{{item['start_time']}}</td>
+                <td>{{item['recurring']}}</td>
+                <td>
+                    <div *ngIf="item['status'] == '1'">
+                        Active    
+                    </div>
+                    <div *ngIf="item['status'] == '2'">
+                        Expired    
+                    </div>
+                    <div *ngIf="item['status'] == '3'">
+                        Completed    
+                    </div>
+                    <div *ngIf="item['status'] == '4'">
+                        Delete    
+                    </div>
+                </td>
+                <td> 
+                    <a class="btn btn-sm btn-danger mr-2" (click)="deleteTodo(item['id'])">Delete</a>
+                    <a class="btn btn-sm btn-primary" routerLink="/edit/{{item['id']}}">Edit</a>
+                </td>     
+            </tr>
+         
+        </tbody>
+      </table>
+
+      <!-- <table datatable class="row-border hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Foo</td>
+            <td>Bar</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Someone</td>
+            <td>Youknow</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Iamout</td>
+            <td>Ofinspiration</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Yoda</td>
+            <td>Skywalker</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Patrick</td>
+            <td>Dupont</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Barack</td>
+            <td>Obama</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>François</td>
+            <td>Holland</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Michel</td>
+            <td>Popo</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Chuck</td>
+            <td>Norris</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Simon</td>
+            <td>Robin</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>Louis</td>
+            <td>Lin</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>Zelda</td>
+            <td>Link</td>
+          </tr>
+        </tbody>
+      </table> -->
+</div>
+

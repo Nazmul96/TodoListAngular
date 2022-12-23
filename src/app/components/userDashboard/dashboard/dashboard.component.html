@@ -1,0 +1,120 @@
+
+<div class="layout">
+    <div class="vertical-layout">
+        <!-- Header START -->
+        <app-user-header></app-user-header>  
+        <!-- Header END -->
+
+        <!-- Side Nav START -->
+        <app-sidevar></app-sidevar>
+        <!-- Side Nav END -->
+
+        <!-- Content START -->
+        <div class="content">
+            <div class="main">
+                <div class="row">
+                    <div class="col-md-3">
+                       <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h3>{{dashboard['complete_task']}}</h3>
+                                        <span class="text-muted fw-semibold">Completed Tasks</span>
+                                    </div>
+                                    <div class="text-success fw-bold h1"><i class="icon-check-circle feather"></i></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                       <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h3>{{dashboard['pending_task']}}</h3>
+                                        <span class="text-muted fw-semibold">Pending Tasks</span>
+                                    </div>
+                                    <div class="text-warning fw-bold h1"><i class="icon-clock feather"></i></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                       <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h3>{{dashboard['overdue_task']}}</h3>
+                                        <span class="text-muted fw-semibold">Overdue Tasks</span>
+                                    </div>
+                                    <div class="text-danger fw-bold h1"><i class="icon-alert-circle feather"></i></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                       <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h3>{{dashboard['overdue_task']}}</h3>
+                                        <span class="text-muted fw-semibold">Total Tasks</span>
+                                    </div>
+                                    <div class="text-primary fw-bold h1"><i class="icon-inbox feather"></i></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mb-3">Overview</h4>
+                                
+                                <div id="overview-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <h4 class="mb-0">Upcoming Task</h4>
+                                    <!-- <a href="/add-task" class="btn btn-outline-secondary btn-sm">Add Task</a> -->
+                                </div>
+                                <table class="table table-hover mt-2">
+                                  
+                                    <tbody>
+                                        <tr class="cursor-pointer" *ngFor="let item of taskData;">
+                                            <td width="10">
+                                                <input type="checkbox" class="" name="">
+                                            </td>
+                                            <td>{{item['task_title']}}</td> 
+                                        </tr> 
+                                       
+                                    </tbody>
+        
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+            <!-- Footer START -->
+            <app-user-footer></app-user-footer>
+            <!-- Footer End -->
+        </div>
+        <!-- Content END -->
+
+    </div>
+</div>
+
+
+

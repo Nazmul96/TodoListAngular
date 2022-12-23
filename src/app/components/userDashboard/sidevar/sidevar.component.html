@@ -1,0 +1,59 @@
+<!-- Side Nav START -->
+<div class="side-nav vertical-menu nav-menu-light scrollable">
+    <div class="nav-logo">
+        <div class="w-100 logo">
+            <img class="img-fluid" src="/assets/images/logo/checked.svg" style="max-height: 50px;" alt="logo"> <strong> RsTodo </strong>
+        </div>
+        <div class="mobile-close">
+            <i class="icon-arrow-left feather"></i>
+        </div>
+     </div>
+     <ul class="nav-menu">
+        <li class="nav-menu-item router-link-active">
+            <a routerLink="/dashboard">
+                <i class="feather icon-home"></i>
+                <span class="nav-menu-item-title">Dashboard</span>
+            </a>
+        </li> 
+        <li class="nav-menu-item">
+            <a routerLink="/task-index" routerLinkActive="router-link-active" >
+                <i class="feather icon-mail"></i>
+                <span class="nav-menu-item-title">Task List</span>
+                <span class="badge bg-primary ms-auto">20</span>
+            </a>
+        </li>
+        <li class="nav-menu-item">
+            <a href="/today-task">
+                <i class="icon-calendar feather"></i>
+                <span class="nav-menu-item-title">Today </span>
+                <span class="badge bg-success ms-auto">10</span>
+            </a>
+        </li> 
+        <li class="nav-menu-item">
+            <a href="/upcoming-task">
+                 <i class="icon-calendar feather"></i>
+                <span class="nav-menu-item-title">Upcoming</span>
+            </a>
+        </li>
+        <li class="nav-submenu">
+            <a class="nav-submenu-title">
+                <i class="feather icon-box"></i>
+                <span>Task Item</span>
+                <i class="nav-submenu-arrow"></i>
+            </a>
+            <ul class="nav-menu menu-collapse">
+                <li class="nav-menu-item">
+                    <a routerLink="/add-item">Add item</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a routerLink="/item-list" routerLinkActive="router-link-active" >All Items</a>
+                </li>
+                 
+                
+            </ul>
+        </li>
+    
+    </ul>
+</div>
+<!-- Side Nav END -->
+
